@@ -16,6 +16,7 @@
 \usepackage{lineno}
 \usepackage[inline]{trackchanges} %for better track changes. finalnew option will compile document with changes incorporated.
 \usepackage{soul}
+\usepackage{amsmath}
 \linenumbers
 %%%%%%%
 % As of 2018 we recommend use of the TrackChanges package to mark revisions.
@@ -58,7 +59,7 @@
 %
 % ie, \journalname{Water Resources Research}
 
-\journalname{Enter journal name here}
+\journalname{Water Resources Research}
 
 
 \begin{document}
@@ -75,7 +76,7 @@
 
 % Example: \title{This is a test title}
 
-\title{=enter title here=}
+\title{Scaling Relationship for Low Froude Number Whitewater Flows}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -202,9 +203,38 @@ https://www.agu.org/Share-and-Advocate/Share/Community/Plain-language-summary
 % \section{Conclusions}
 
 
-\section{= enter section title =}
+\section{Model}
 %Text here ===>>>
+Consider a flow with a Froude number ${\rm Fr} = \upsilon/c_{\rm g} = \upsilon/\sqrt{g H}\approx 1$, where $\upsilon$ is the flow speed, $c_{\rm g}$ is the velocity for propagation of gravity waves, $g$ is the gravitational acceleration, and $H$ is the depth of the flow. Assume also that the flow has a lateral width $L$ perpendicular to the flow such that the volumetric flow rate $\dot{V} = H L \upsilon$.
 
+At low flow velocities (i.e., ${\rm Fr} \sim 1$), we can neglect generation of acoustic energy from cavitation, and so we will assume that the flow sound arises from interactions between the flow and the river bed. We expect that the acoustic power generated per unit area at the base of the flow $P_{\rm base}$ should scale with the flux of kinetic energy. The flow kinetic energy per volume $k$ is given by
+\begin{equation}
+    k = \rho \upsilon^2,\label{eqn:kinetic_energy_per_volume}
+\end{equation}
+where $\rho$ is the fluid density. The flux of kinetic energy $f$ across the surface perpendicular to the flow direction and with area $H L$ is therefore given by
+\begin{equation}
+    f = \rho \upsilon^3. \label{eqn:kinetic_energy_flux}
+\end{equation}
+Therefore, $P_{\rm base} \propto \upsilon^3$. Since we have assumed ${\rm Fr} \sim 1$, $\upsilon \sim \sqrt{g H}$. This assumption implies 
+\begin{equation}
+    P_{\rm base} \propto \left( g H \right)^{3/2}.\label{eqn:P_base_in_terms_of_H}
+\end{equation}
+
+For a given volumetric flow rate, we have $H = \dot{V}/\left( L \upsilon\right)$, and so
+\begin{equation}
+H = g^{-1/3} \left( \frac{\dot{V}}{L} \right)^{2/3}.\label{eqn:H_in_terms_of_Vdot}
+\end{equation}
+
+Plugging this equation into Equation \ref{eqn:P_base_in_terms_of_H} gives
+\begin{equation}
+    P_{\rm base} \propto g \left( \frac{\dot{V}}{L} \right).\label{eqn:P_base_in_terms_of_Vdot}
+\end{equation}
+
+Now, we want to estimate the acoustic signal that emerges from the top of the flow, the signal that is actually measured. Assuming an exponential decay from the bottom of the flow to the top gives the following relationship for the acoustic power per area at the top of the flow $P_{\rm top}$:
+\begin{equation}
+    P_{\rm top} = P_{\rm base} e^{-\alpha H} \propto g \left( \frac{\dot{V}}{L} \right) e^{-\alpha g^{-1/3} \left( \dot{V}/L \right)^{2/3}},\label{eqn:P_top_in_terms_of_P_base}
+\end{equation}
+where $\alpha$ is the appropriate acoustic extinction coefficient. 
 
 %%
 
