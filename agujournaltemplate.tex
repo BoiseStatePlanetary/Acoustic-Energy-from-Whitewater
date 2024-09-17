@@ -76,7 +76,7 @@
 
 % Example: \title{This is a test title}
 
-\title{Scaling Relationship for Low Froude Number Whitewater Flows}
+\title{Scaling Relationships for Acoustic Signals from Whitewater Flows}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -251,6 +251,31 @@ This model of acoustic energy generation predicts a maximum at $r = 3/2$, as sho
     \caption{Predicted scaling for $P_{\rm top}$ in terms of the extinction coefficient $\alpha$, gravitational acceleration $g$, volumetric flow rate $\dot{V}$, and lateral flow width $L$.}
     \label{fig:P_top_scaling}
 \end{figure}
+
+Consider a sheen of bubbles on the surface of the flow. The bubbles have a characteristic radius $r$ and are closely packed, meaning there is roughly one bubble for every $\pi r^2$ unit of area. The air pressure contained inside each bubble $P_{\rm in}$ is 
+\begin{equation}
+    P_{\rm in} = P_{\rm out} + \frac{T}{4 r},\label{eqn:P_in}
+\end{equation}
+where $P_{\rm out}$ is the ambient atmospheric pressure and $T$ is the surface tension of water. 
+
+The total energy available within each bubble to generate an acoustic signal is 
+\begin{equation}
+    E = \left( P_{\rm in} - P_{\rm out} \right) \frac{4\pi}{3} r^3 - \frac{\pi T}{3} r^2,\label{eqn:bubble_acoustic_energy}
+\end{equation}
+and so the areal bubble energy density $E/A$ available to produce acoustic signals is
+\begin{equation}
+    \frac{E}{A} = \frac{ \pi T r^2/3 }{\pi r^2} = \frac{T}{3}.\label{eqn:bubble_energy_areal_density}
+\end{equation}
+If the typical timescale for such bubbles to burst and release their acoustic energy is $\tau$, then the available areal density of power $P_{\rm bubble}$ for generating acoustic signals is
+\begin{equation}
+    P_{\rm bubble} = \frac{T}{3\tau}.\label{eqn:P_bubble}
+\end{equation}
+
+Thus, we expect the areal density of power available to drive all acoustic signals for a whitewater flow $P_{\rm acoustic}$ to scale as 
+\begin{equation}
+    P_{\rm acoustic} = \kappa \dot{V}^{3/2} e^{-\left( \dot{V}/ \dot{V}_0 \right)^{2/3}} + \frac{T}{3\tau},\label{eqn:P_acoustic}
+\end{equation}
+where $\kappa$, $\dot{V}_0$, and $\tau$ can be treated as free parameters that can be fit to the observational data.
 
 %%
 
